@@ -125,7 +125,7 @@ export default function reducer(state = defaultState, action) {
     };
   }
 
-  if (action.type === SET_SEARCH_PRODUCTS || state.searchValue.length > 0) {
+  if (action.type === SET_SEARCH_PRODUCTS) {
     const results = state.productList.filter((item) => {
       return item.title.toLowerCase().includes(state.searchValue);
     });
