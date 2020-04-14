@@ -18,7 +18,9 @@ export const TextContainer = styled.div`
   flex-direction: column;
   background: #f0f0f0;
   padding: 10px 15px 10px 15px;
-  margin-bottom: 30px;
+  @media (max-width: 700px) {
+    margin-bottom: 20px;
+  }
 `;
 export const Container = styled.div`
   width: 90%;
@@ -27,7 +29,6 @@ export const Container = styled.div`
   height: 75vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr;
 
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
