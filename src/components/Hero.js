@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { MainLink } from "../Theme/MainLink";
 
 function Hero({ img, title, max, children }) {
   return (

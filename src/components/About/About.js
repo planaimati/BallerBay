@@ -1,9 +1,10 @@
 import React from "react";
+//styled components
 import { Section } from "./Section";
 import { ImageContainer, TextContainer, Container } from "./Containers";
 import { H1 } from "./H1";
 import { Desc } from "./Desc";
-import { Icons, HrefIG, HrefFB } from "./Icons";
+import { Icons, HrefIG, HrefFB, FaInfoCompany } from "./Icons";
 import { Line } from "./Line";
 
 function About() {
@@ -32,14 +33,32 @@ function About() {
           <Line></Line>
           <Icons>
             <div>
-              <a href="https://www.facebook.com/profile.php?id=100021759016143">
+              <a
+                href="https://www.instagram.com/baller_bay_official/?igshid=bpbwz2ltfc55&fbclid=IwAR1wPCRg0MJaXU_9SiriwjoPK8wsCE4ZKfmnI41lEeJzJG4CM07nIMIiHs4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <HrefIG></HrefIG>
               </a>
             </div>
 
             <div>
-              <a href="https://www.instagram.com/baller_bay_official/?igshid=bpbwz2ltfc55&fbclid=IwAR1wPCRg0MJaXU_9SiriwjoPK8wsCE4ZKfmnI41lEeJzJG4CM07nIMIiHs4">
+              <a
+                href="https://www.facebook.com/profile.php?id=100021759016143"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <HrefFB></HrefFB>
+              </a>
+            </div>
+
+            <div>
+              <a
+                href="https://www.money.pl/rejestr-firm/nip/548-27-29-178/kod-pocztowy/43-460/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInfoCompany></FaInfoCompany>
               </a>
             </div>
           </Icons>

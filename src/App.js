@@ -3,11 +3,6 @@ import React from "react";
 // import theme providera oraz styled-components
 import Theme from "./Theme/Theme";
 import GlobalStyle from "./Theme/GlobalStyle";
-
-//redux
-
-//css
-import "./App.css";
 // import stron
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -21,16 +16,13 @@ import CheckoutPage from "./pages/CheckoutPage";
 import Navbar from "./components/Navbar/Navbar";
 // react router import
 import { Route, Switch } from "react-router-dom";
-//reducery
-
-///dsad/as/d
+/// API
 import { client } from "./API/contentful";
 import { connect } from "react-redux";
 import { getProducts } from "./actions/actions";
 
-//const gówno = [];
-
 function App({ setProducts }) {
+  //przy każdym renderowaniu całej aplikacji pobierane są dane o produktach z API
   React.useEffect(() => {
     client
       .getEntries({
@@ -41,7 +33,7 @@ function App({ setProducts }) {
 
     return () => {};
   }, [setProducts]);
-
+  // poniżej został skonfigurowany react router i jego ścieżki oraz GlobalStyle i Theme provider
   return (
     <Theme>
       <GlobalStyle />

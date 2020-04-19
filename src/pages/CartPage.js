@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { MainLink } from "../Theme/MainLink";
-import { GET_TOTAL } from "../actions/actions";
-
-import { connect } from "react-redux";
 import CartItem from "../components/Cart/CartItem";
+import { MainLink } from "../Theme/MainLink";
+//react redux
+import { GET_TOTAL } from "../actions/actions";
+import { connect } from "react-redux";
 
 function CartPage({ cart, getTotal, total }) {
+  //przy każdym renderowaniu wywowaływana jest funkcja getTotal() która sumuje łączną cenę zamówienia
   React.useEffect(() => {
     getTotal();
   }, [getTotal]);
@@ -26,12 +27,14 @@ function CartPage({ cart, getTotal, total }) {
             return <CartItem key={item.id} {...item}></CartItem>;
           })}
         </div>
-        <p>RAZEM: {total}</p>
+        <p>RAZEM: {total} PLN</p>
         <MainLink to="/checkout">zapłać</MainLink>
       </Container>
     );
   }
 }
+
+//styled
 
 const Container = styled.section`
   padding-top: 150px;
@@ -46,7 +49,7 @@ const Container = styled.section`
     min-height: 80vh;
   }
 `;
-
+//react redux
 const mapStateToProps = ({ productsState: { cart, total } }) => {
   return {
     cart: cart,

@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Product from "./Product";
+//react redux
 import { connect } from "react-redux";
 
-function ProductList({ products, setProducts }) {
+function ProductList({ products }) {
+  // jako propsy do komponentu Produkt podajemy pojedyńczy obiekt
   return (
     <CENTER>
       {products.map((item) => {

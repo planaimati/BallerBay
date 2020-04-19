@@ -1,6 +1,8 @@
 import React from "react";
+//react redux
 import { connect } from "react-redux";
 import { SET_SEARCH_VALUE, SET_SEARCH_PRODUCTS } from "../../actions/actions";
+//styled components/ icons
 import { GoSearch } from "react-icons/go";
 import styled from "styled-components";
 

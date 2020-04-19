@@ -13,12 +13,14 @@ function Product({ products }) {
 
       <DETAILS>
         <TITLE>{products.title}</TITLE>
-        <Detail>{products.size}</Detail>
-        <Detail>{products.price} zł</Detail>
+        <Detail>{products.size} </Detail>
+        <Detail>{products.price} PLN</Detail>
       </DETAILS>
     </ARTICLE>
   );
 }
+
+//styled components
 
 const ARTICLE = styled.div`
   display: grid;

@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+//react router
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+// navlink umożliwia nadanie klasy active
 
 function List() {
   let location = useLocation();

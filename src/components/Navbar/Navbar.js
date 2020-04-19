@@ -1,16 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
+//styled components
 import styled from "styled-components";
-import { SCROLL } from "../../actions/actions";
-import { useLocation } from "react-router-dom";
 import List from "./List";
 import { AiOutlineShopping } from "react-icons/ai";
+//react redux
+import { connect } from "react-redux";
+//react router
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function Navbar({ cartProducts, products }) {
+function Navbar({ cartProducts }) {
+  //funkcja która zwraca obiekt z info na temat aktualnej lokacji
   let location = useLocation();
-
-  console.log(location);
 
   return (
     <Header
@@ -21,12 +22,14 @@ function Navbar({ cartProducts, products }) {
       }
     >
       <Navigation>
-        <Logo color={location.pathname === "/" ? "white" : "black"}>
-          baller bay
-        </Logo>
+        <LogoLink to="/">
+          <Logo color={location.pathname === "/" ? "white" : "black"}>
+            baller bay
+          </Logo>
+        </LogoLink>
+
         <ShopIcon>
           <Link to="/cart">
-            {" "}
             <AiOutlineShoppingIcon
               color={location.pathname === "/" ? "white" : null}
             ></AiOutlineShoppingIcon>
@@ -45,6 +48,12 @@ function Navbar({ cartProducts, products }) {
   );
 }
 
+//styled components
+
+const LogoLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const ItemAmount = styled.p`
   color: white;
   margin: 0;
@@ -62,6 +71,7 @@ const ShopIcon = styled.div`
   top: 5px;
   right: 10px;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
@@ -91,6 +101,7 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   text-transform: uppercase;
   font-size: 3rem;
   letter-spacing: ${(props) => props.theme.spacing.mainSpacing};
@@ -109,20 +120,8 @@ const ListContainer = styled.div`
   justify-content: center;
 `;
 
-const mapStateToProps = ({ productsState: { cartProducts, products } }) => {
-  return { cartProducts: cartProducts, products };
+const mapStateToProps = ({ productsState: { cartProducts } }) => {
+  return { cartProducts: cartProducts };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    scroll: () =>
-      dispatch({ type: SCROLL, payload: { heigh: window.pageYOffset } }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
-
-// heigh={heigh}
-//navColor={
-//location.pathname === "/" || location.pathname ? "white" : "black"
-//}
+export default connect(mapStateToProps)(Navbar);

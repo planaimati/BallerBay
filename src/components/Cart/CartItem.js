@@ -10,16 +10,17 @@ import { connect } from "react-redux";
 import { deleteItem } from "../../actions/actions";
 
 function CartItem(props) {
+  console.log(props);
+
   return (
     <Article>
       <Img src={props.image} alt="" />
       <Container>
         <h4>{props.title}</h4>
-        <Desc>designer: {props.designer}</Desc>
-        <Desc>cena: {props.price}</Desc>
+        <Desc>marka: {props.designer}</Desc>
+        <Desc>cena: {props.price} PLN</Desc>
         <Desc>rozmiar: {props.size}</Desc>
         <Desc>kolor: {props.color}</Desc>
-        <Desc>ilość: {props.amount}</Desc>
 
         <Button onClick={() => props.deleteItem()}>usuń</Button>
       </Container>

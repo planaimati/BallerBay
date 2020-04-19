@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-//importy styled css
+//styled components
 import { Container } from "./Container";
 import { SmallContainerLeft, SmallContainerRight } from "./SmallContainer";
 import { Input } from "./Input";

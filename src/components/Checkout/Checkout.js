@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+//styled components
 import { Section } from "../About/Section";
 import { Container } from "../About/Containers";
 import { Desc } from "../About/Desc";
@@ -24,8 +24,7 @@ function Checkout() {
             <Line></Line>
             <Desc>
               Aby sfinalizować zamówienie wyślij do mnie wiadomość za pomocą
-              formularza poniżej, napisz jaki przedmiot Cię interesuje a na
-              pewno się dogadamy. Możesz również odezwać się do mnie na
+              formularza poniżej. Możesz również odezwać się do mnie na
               facebooku.
             </Desc>
           </Text>

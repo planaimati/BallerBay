@@ -1,15 +1,14 @@
+//import akcji
+
 import {
   ADD_ITEM_TO_CART,
-  //SET_LOADING,
   SET_SEARCH_VALUE,
   SET_PRODUCTS,
-  SET_PRODUCTS_INFO,
-  SET_DELIVERY_INFO,
   SET_SEARCH_PRODUCTS,
   GET_TOTAL,
 } from "../actions/actions";
-//import { items } from "../productData";
 
+//stan aplikacji
 const defaultState = {
   products: [],
   productList: [],
@@ -20,16 +19,15 @@ const defaultState = {
   singleProduct: {},
   productInfo: false,
   deliveryInfo: false,
+  favorites: [],
   //wyszukiwanie
 
   searchValue: "",
-  category: "all",
-  price: 0,
-  maxPrice: 0,
-  minPrice: 0,
 };
 
 export default function reducer(state = defaultState, action) {
+  //usuwanie przedmiotów z koszyka
+
   if (action.type === "DELETE") {
     let deletedItems = state.cart.filter((item) => {
       return item.id !== action.payload.id;
@@ -41,12 +39,12 @@ export default function reducer(state = defaultState, action) {
       cartProducts: state.cartProducts - 1,
     };
   }
-
+  // dodawanie przedmiotów do koszyka
   if (action.type === ADD_ITEM_TO_CART) {
     let cartItems = state.products.find((item) => {
       return item.id === action.payload.id;
     });
-
+    //sprawdzenie czy produkt został już dodany do koszyka
     let addedItems = state.cart.find((item) => item.id === action.payload.id);
 
     if (addedItems) {
@@ -54,7 +52,7 @@ export default function reducer(state = defaultState, action) {
         ...state,
       };
     }
-
+    //sprawdzenie czy produkt jest dostępny
     if (cartItems.avilable !== true) {
       return {
         ...state,
@@ -67,6 +65,8 @@ export default function reducer(state = defaultState, action) {
       cartProducts: state.cartProducts + 1,
     };
   }
+
+  //przypisanie danych pobranych z API do tablicy
 
   if (action.type === SET_PRODUCTS) {
     let importedItems = action.payload.products.map((item) => {
@@ -104,19 +104,7 @@ export default function reducer(state = defaultState, action) {
     };
   }
 
-  if (action.type === SET_PRODUCTS_INFO) {
-    return {
-      ...state,
-      productInfo: !state.productInfo,
-    };
-  }
-
-  if (action.type === SET_DELIVERY_INFO) {
-    return {
-      ...state,
-      deliveryInfo: !state.deliveryInfo,
-    };
-  }
+  //input wyszukiwarki
 
   if (action.type === SET_SEARCH_VALUE) {
     return {
@@ -124,6 +112,8 @@ export default function reducer(state = defaultState, action) {
       searchValue: action.payload.value,
     };
   }
+
+  //wyszukwiarka
 
   if (action.type === SET_SEARCH_PRODUCTS) {
     const results = state.productList.filter((item) => {
@@ -135,6 +125,8 @@ export default function reducer(state = defaultState, action) {
       products: results,
     };
   }
+
+  // liczenie łącznej kwoty za zakupy
 
   if (action.type === GET_TOTAL) {
     let { total, amount } = state.cart.reduce(
